@@ -1,633 +1,236 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Handy Wildan Firdaus — Cloud & Network Engineer Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --aws-orange: #FF9900;
-  --aws-deep: #232F3E;
-  --aws-blue: #147EBA;
-  --aws-teal: #00A8B0;
-  --bg: #0D1117;
-  --bg2: #161B22;
-  --bg3: #1E2530;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.13);
-  --text: #E6EDF3;
-  --text2: #8B949E;
-  --text3: #6E7681;
-  --green: #3FB950;
-  --yellow: #E3B341;
-  --red: #F85149;
-  --purple: #BC8CFF;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handy Wildan Firdaus — Portfolio</title>
+  <meta name="description" content="Cloud & Network Infrastructure Engineer dari Depok, Indonesia." />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --aws-orange: #FF9900;
+      --aws-deep: #232F3E;
+      --aws-blue: #147EBA;
+      --aws-teal: #00A8B0;
+      --bg: #0D1117;
+      --bg2: #161B22;
+      --bg3: #1E2530;
+      --border: rgba(255,255,255,0.08);
+      --border2: rgba(255,255,255,0.15);
+      --text: #E6EDF3;
+      --text2: #8B949E;
+      --text3: #6E7681;
+      --green: #3FB950;
+      --purple: #BC8CFF;
+    }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-/* BG GRID */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,153,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,153,0,0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-}
+    /* BG GRID */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,153,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,153,0,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-body::after {
-  content: '';
-  position: fixed;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(255,153,0,0.06) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-.wrapper { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
+    /* NAVBAR */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-weight: 800; font-size: 18px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-logo span { color: var(--aws-orange); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-link { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: var(--aws-orange); }
 
-/* HEADER */
-header {
-  padding: 40px 0 32px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-  animation: fadeDown 0.6s ease both;
-}
+    /* SECTIONS */
+    section { padding: 60px 0; }
+    .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aws-orange); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+    .section-heading { font-size: 28px; font-weight: 800; margin-bottom: 32px; }
 
-.header-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,153,0,0.12);
-  border: 1px solid rgba(255,153,0,0.3);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--aws-orange);
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-.header-badge::before { content: '🏆'; font-size: 10px; }
+    /* HERO */
+    .hero { padding: 80px 0 60px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.3);
+      border-radius: 20px; padding: 4px 12px; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--aws-orange);
+      margin-bottom: 16px;
+    }
+    .hero-title { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .hero-title span { color: var(--aws-orange); }
+    .hero-sub { font-size: 16px; color: var(--text2); max-width: 600px; margin-bottom: 24px; line-height: 1.6; }
+    .btn-group { display: flex; gap: 12px; }
+    .btn { padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--aws-orange); color: #0D1117; }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-outline { border: 1px solid var(--border2); color: var(--text); background: var(--bg2); }
+    .btn-outline:hover { border-color: var(--aws-orange); color: var(--aws-orange); }
 
-h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(28px, 5vw, 48px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
-h1 span { color: var(--aws-orange); }
-.subtitle { font-size: 14px; color: var(--text2); margin-top: 8px; font-family: 'JetBrains Mono', monospace; }
+    /* ABOUT GRID */
+    .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: center; }
+    .about-photo { width: 100%; height: 380px; object-fit: cover; border-radius: 16px; border: 1px solid var(--border2); }
 
-.header-right { text-align: right; }
-.date-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--text3);
-  margin-bottom: 8px;
-}
-.motto {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--aws-orange);
-  opacity: 0.9;
-  max-width: 240px;
-  text-align: right;
-  line-height: 1.4;
-}
+    /* CARDS GRID */
+    .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px;
+      transition: all 0.2s; position: relative; overflow: hidden;
+    }
+    .card:hover { border-color: var(--border2); transform: translateY(-2px); }
 
-/* HERO PROFILE CARD */
-.profile-hero {
-  background: var(--bg2);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  padding: 32px;
-  margin-bottom: 24px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 32px;
-  align-items: center;
-  animation: fadeUp 0.5s 0.1s ease both;
-  position: relative;
-  overflow: hidden;
-}
-.profile-hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--aws-orange), var(--aws-teal), var(--purple));
-}
+    /* CERTIFICATES */
+    .cert-card { cursor: pointer; }
+    .cert-card::before { content: ''; position: absolute; top:0; left:0; right:0; height: 3px; background: var(--aws-orange); }
+    .cert-title { font-size: 15px; font-weight: 700; margin-top: 8px; margin-bottom: 4px; }
+    .cert-issuer { font-size: 12px; color: var(--text2); font-family: 'JetBrains Mono', monospace; }
 
-.profile-info .hero-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif; }
-.profile-info .hero-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
-.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; }
-.hb-tag {
-  font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--bg3);
-  color: var(--text);
-}
+    /* LIGHTBOX MODAL */
+    .modal {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal.active { display: flex; }
+    .modal-img { max-width: 90%; max-height: 85vh; border-radius: 12px; border: 1px solid var(--border2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .modal-close { position: absolute; top: 20px; right: 20px; background: var(--bg3); color: var(--text); border: 1px solid var(--border2); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 18px; }
 
-.profile-stats { display: flex; gap: 20px; }
-.p-stat { text-align: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
-.p-stat .n { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 800; color: var(--aws-orange); }
-.p-stat .l { font-size: 11px; color: var(--text2); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 30px 0; text-align: center; color: var(--text3); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
 
-/* STAT CARDS ROW */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 24px;
-  animation: fadeUp 0.5s 0.2s ease both;
-}
-.stat-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.stat-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.stat-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  border-radius: 0 0 14px 14px;
-}
-.stat-card.c-orange::after { background: var(--aws-orange); }
-.stat-card.c-green::after { background: var(--green); }
-.stat-card.c-teal::after { background: var(--aws-teal); }
-.stat-card.c-purple::after { background: var(--purple); }
-.stat-icon { font-size: 22px; margin-bottom: 10px; }
-.stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
-.stat-lbl { font-size: 12px; color: var(--text2); }
-.stat-card.c-orange .stat-val { color: var(--aws-orange); }
-.stat-card.c-green .stat-val { color: var(--green); }
-.stat-card.c-teal .stat-val { color: var(--aws-teal); }
-.stat-card.c-purple .stat-val { color: var(--purple); }
-
-/* GRID LAYOUTS */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
-
-.panel {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  animation: fadeUp 0.5s 0.3s ease both;
-}
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.panel-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.panel-title .dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-}
-.dot-orange { background: var(--aws-orange); box-shadow: 0 0 6px var(--aws-orange); }
-.dot-teal { background: var(--aws-teal); box-shadow: 0 0 6px var(--aws-teal); }
-.dot-green { background: var(--green); box-shadow: 0 0 6px var(--green); }
-.dot-purple { background: var(--purple); box-shadow: 0 0 6px var(--purple); }
-.panel-tag {
-  font-size: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--text3);
-  background: rgba(255,255,255,0.05);
-  padding: 3px 8px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-
-/* SECTION TITLE */
-.section-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-/* PROJECT CARDS */
-.project-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; animation: fadeUp 0.5s 0.4s ease both; }
-.project-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.25s;
-}
-.project-card:hover { transform: translateY(-3px); border-color: var(--border2); }
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-}
-.pc-cloud::before { background: linear-gradient(90deg, var(--aws-orange), #FFB74D); }
-.pc-net::before { background: linear-gradient(90deg, var(--aws-teal), #4ECDC4); }
-.pc-web::before { background: linear-gradient(90deg, var(--purple), #DA9FF9); }
-
-.pc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
-.pc-icon { font-size: 28px; }
-.pc-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-}
-.pc-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-.pc-sub { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 14px; }
-.pc-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
-.pc-tag { font-size: 10px; font-family: 'JetBrains Mono', monospace; padding: 2px 6px; border-radius: 4px; background: var(--bg3); border: 1px solid var(--border); color: var(--text3); }
-
-/* SKILLS GRID */
-.skills-grid { display: flex; flex-direction: column; gap: 8px; }
-.skill-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  transition: all 0.2s;
-}
-.skill-row:hover { border-color: var(--border2); }
-.skill-icon { font-size: 18px; width: 28px; text-align: center; }
-.skill-name { font-size: 13px; font-weight: 600; flex: 1; }
-.skill-level {
-  font-size: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-.sl-expert { background: rgba(63,185,80,0.15); color: var(--green); }
-.sl-intermediate { background: rgba(255,153,0,0.15); color: var(--aws-orange); }
-.sl-beginner { background: rgba(0,168,176,0.15); color: var(--aws-teal); }
-
-/* TIMELINE / EXPERIENCE */
-.timeline { display: flex; flex-direction: column; gap: 0; }
-.tl-item {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 20px;
-  position: relative;
-}
-.tl-item::before {
-  content: '';
-  position: absolute;
-  left: 15px; top: 30px;
-  width: 2px;
-  height: calc(100% - 10px);
-  background: var(--border);
-}
-.tl-item:last-child::before { display: none; }
-.tl-dot {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
-  border: 2px solid;
-  position: relative;
-  z-index: 1;
-}
-.tl-dot.gold { background: rgba(255,153,0,0.15); border-color: var(--aws-orange); color: var(--aws-orange); }
-.tl-dot.teal { background: rgba(0,168,176,0.15); border-color: var(--aws-teal); color: var(--aws-teal); }
-.tl-dot.purple { background: rgba(188,140,255,0.15); border-color: var(--purple); color: var(--purple); }
-
-.tl-content { flex: 1; }
-.tl-date { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
-.tl-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.tl-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
-
-/* TABS */
-.tabs { display: flex; gap: 4px; margin-bottom: 16px; background: var(--bg3); padding: 4px; border-radius: 10px; width: fit-content; }
-.tab-btn { font-size: 12px; padding: 6px 14px; border-radius: 7px; border: none; background: transparent; color: var(--text2); cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
-.tab-btn.active { background: var(--bg2); color: var(--text); border: 1px solid var(--border2); }
-
-/* CONTACT BANNER */
-.contact-banner {
-  background: linear-gradient(135deg, rgba(255,153,0,0.12), rgba(0,168,176,0.08));
-  border: 1px solid rgba(255,153,0,0.2);
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  animation: fadeUp 0.5s 0.45s ease both;
-}
-.cb-left { display: flex; align-items: center; gap: 16px; }
-.cb-emoji { font-size: 36px; }
-.cb-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--aws-orange); margin-bottom: 4px; }
-.cb-sub { font-size: 13px; color: var(--text2); }
-.cb-btn {
-  background: var(--aws-orange);
-  color: #0D1117;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: opacity 0.2s;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-.cb-btn:hover { opacity: 0.9; }
-
-/* ANIMATIONS */
-@keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-
-@media (max-width: 768px) {
-  .stat-row { grid-template-columns: repeat(2, 1fr); }
-  .grid-2 { grid-template-columns: 1fr; }
-  .project-cards { grid-template-columns: 1fr; }
-  .profile-hero { grid-template-columns: 1fr; }
-}
-</style>
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrapper">
 
-<!-- HEADER -->
-<header>
-  <div class="header-left">
-    <div class="header-badge">1st PLACE LKS CLOUD COMPUTING KOTA DEPOK 2026</div>
-    <h1>Handy <span>Wildan Firdaus</span></h1>
-    <div class="subtitle">▸ Cloud & Network Engineer · Teknik Komputer & Jaringan</div>
-  </div>
-  <div class="header-right">
-    <div class="date-badge" id="liveDate"></div>
-    <div class="motto">"Automate infrastructure, scale with confidence."</div>
-  </div>
-</header>
-
-<!-- PROFILE HERO -->
-<div class="profile-hero">
-  <div class="profile-info">
-    <div class="hero-title">Tentang Saya</div>
-    <div class="hero-desc">
-      Siswa kelas 11 jurusan <strong>Teknik Komputer dan Jaringan</strong> yang berfokus pada Cloud Computing, DevOps, dan Enterprise Networking. Berpengalaman dalam merancang arsitektur cloud AWS, otomatisasi infrastruktur menggunakan Terraform & CloudFormation, serta pengelolaan jaringan berskala luas. Peraih Juara 1 LKS Cloud Computing tingkat Kota Depok 2026 dan peserta tingkat Provinsi Jawa Barat.
-    </div>
-    <div class="hero-badges">
-      <span class="hb-tag">☁️ AWS Cloud</span>
-      <span class="hb-tag">⚙️ Terraform & IaC</span>
-      <span class="hb-tag">🐧 Linux & DevOps</span>
-      <span class="hb-tag">🌐 MikroTik & Cisco</span>
-      <span class="hb-tag">⚛️ React & Web Dev</span>
-    </div>
-  </div>
-  <div class="profile-stats">
-    <div class="p-stat">
-      <div class="n">1st</div>
-      <div class="l">LKS Depok 2026</div>
-    </div>
-    <div class="p-stat">
-      <div class="n">30+</div>
-      <div class="l">AWS Services</div>
-    </div>
-  </div>
-</div>
-
-<!-- STAT CARDS -->
-<div class="stat-row">
-  <div class="stat-card c-orange">
-    <div class="stat-icon">☁️</div>
-    <div class="stat-val">AWS</div>
-    <div class="stat-lbl">Cloud Architecture</div>
-  </div>
-  <div class="stat-card c-teal">
-    <div class="stat-icon">🏗️</div>
-    <div class="stat-val">IaC</div>
-    <div class="stat-lbl">Terraform & CFN</div>
-  </div>
-  <div class="stat-card c-green">
-    <div class="stat-icon">🌐</div>
-    <div class="stat-val">Network</div>
-    <div class="stat-lbl">MikroTik & Cisco</div>
-  </div>
-  <div class="stat-card c-purple">
-    <div class="stat-icon">🚀</div>
-    <div class="stat-val">DevOps</div>
-    <div class="stat-lbl">CI/CD & Docker</div>
-  </div>
-</div>
-
-<!-- FEATURED PROJECTS -->
-<div class="section-title">PORTFOLIO PROJECTS</div>
-<div class="project-cards">
-  <div class="project-card pc-cloud">
-    <div class="pc-top">
-      <div class="pc-icon">⚡</div>
-      <div class="pc-badge">AWS Cloud</div>
-    </div>
-    <div class="pc-title">Multi-Tier AWS Architecture</div>
-    <div class="pc-sub">Implementasi arsitektur high-availability dengan VPC multi-subnet, Application Load Balancer, Auto Scaling Group, dan RDS.</div>
-    <div class="pc-tags">
-      <span class="pc-tag">EC2</span>
-      <span class="pc-tag">VPC</span>
-      <span class="pc-tag">ALB</span>
-      <span class="pc-tag">ASG</span>
-    </div>
-  </div>
-  <div class="project-card pc-net">
-    <div class="pc-top">
-      <div class="pc-icon">🌐</div>
-      <div class="pc-badge">Networking</div>
-    </div>
-    <div class="pc-title">Enterprise Network Routing</div>
-    <div class="pc-sub">Konfigurasi routing dinamis OSPF multi-area, BGP, Inter-VLAN routing pada Cisco switches dan MikroTik RouterOS v7.</div>
-    <div class="pc-tags">
-      <span class="pc-tag">MikroTik</span>
-      <span class="pc-tag">Cisco</span>
-      <span class="pc-tag">OSPF</span>
-      <span class="pc-tag">BGP</span>
-    </div>
-  </div>
-  <div class="project-card pc-web">
-    <div class="pc-top">
-      <div class="pc-icon">💻</div>
-      <div class="pc-badge">Web & DevOps</div>
-    </div>
-    <div class="pc-title">Cloud Study & Portfolio Dashboard</div>
-    <div class="pc-sub">Dashboard interaktif berbasis web untuk persiapan kompetisi cloud computing dan showcase portofolio profesional.</div>
-    <div class="pc-tags">
-      <span class="pc-tag">HTML/CSS</span>
-      <span class="pc-tag">JavaScript</span>
-      <span class="pc-tag">Vercel</span>
-    </div>
-  </div>
-</div>
-
-<!-- SKILLS + EXPERIENCE -->
-<div class="grid-2">
-
-  <!-- TECHNICAL SKILLS -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-title"><span class="dot dot-orange"></span>Technical Skills</div>
-      <div class="panel-tag">Expertise</div>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn active" onclick="filterSkills('all',this)">Semua</button>
-      <button class="tab-btn" onclick="filterSkills('cloud',this)">Cloud & IaC</button>
-      <button class="tab-btn" onclick="filterSkills('net',this)">Network</button>
-      <button class="tab-btn" onclick="filterSkills('devops',this)">DevOps</button>
-    </div>
-
-    <div class="skills-grid" id="skillsGrid"></div>
-  </div>
-
-  <!-- EXPERIENCE & ACHIEVEMENTS -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-title"><span class="dot dot-green"></span>Prestasi & Kegiatan</div>
-      <div class="panel-tag">Milestones</div>
-    </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot gold">🏆</div>
-        <div class="tl-content">
-          <div class="tl-date">Mei 2026</div>
-          <div class="tl-title">Juara 1 LKS Cloud Computing Kota Depok</div>
-          <div class="tl-desc">Meraih Juara 1 tingkat Kota Depok dan melanjutkan kompetisi di tingkat Provinsi Jawa Barat LKS SMK XXXIV 2026.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot teal">☁️</div>
-        <div class="tl-content">
-          <div class="tl-date">Juli - Agustus 2026</div>
-          <div class="tl-title">AWS Summit Jakarta & IDNOG'11</div>
-          <div class="tl-desc">Berpartisipasi dalam konferensi teknologi cloud dan networking terkemuka untuk memperluas wawasan industri.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot purple">⚙️</div>
-        <div class="tl-content">
-          <div class="tl-date">Agustus - September 2026</div>
-          <div class="tl-title">Vocational Internship (PKL)</div>
-          <div class="tl-desc">Melaksanakan praktik kerja lapangan di bidang IT support, hardware maintenance, dan system provisioning.</div>
-        </div>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">Handy <span>Wildan</span></a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#certificates" class="nav-link">Certificates</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
     </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge">🏆 1st Place LKS Cloud Computing Depok 2026</div>
+      <h1 class="hero-title">Handy Wildan <span>Firdaus</span></h1>
+      <p class="hero-sub">Cloud & Network Infrastructure Engineer. Saya merancang arsitektur jaringan yang aman dan infrastruktur server yang andal.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">Lihat Projects</a>
+        <a href="#certificates" class="btn btn-outline">Lihat Sertifikat</a>
+      </div>
+    </section>
+
+    <!-- ABOUT + FOTO -->
+    <section id="about">
+      <div class="section-title">About Me</div>
+      <div class="about-grid">
+        <img src="foto pribadi.jpg" alt="Handy Wildan Firdaus" class="about-photo" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'" />
+        <div>
+          <h2 class="section-heading">Menghubungkan Infrastruktur &amp; Cloud</h2>
+          <p style="color:var(--text2); line-height: 1.6; margin-bottom: 12px;">Hai! Saya Handy Wildan Firdaus, siswa jurusan Teknik Komputer dan Jaringan dari Depok.</p>
+          <p style="color:var(--text2); line-height: 1.6; margin-bottom: 16px;">Fokus utama saya adalah otomatisasi Cloud AWS, Terraform, sistem operasi Linux, serta enterprise routing menggunakan Cisco dan MikroTik.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates">
+      <div class="section-title">Certifications &amp; Awards</div>
+      <h2 class="section-heading">Sertifikat &amp; Penghargaan</h2>
+      <div class="grid-cards">
+
+        <div class="card cert-card" onclick="openCert('sertifikat lks kota depok 2026.jpeg')">
+          <div style="font-size:11px; color:var(--aws-orange); font-family:monospace;">2026 · LKS DIKMEN</div>
+          <div class="cert-title">1st Place — LKS Cloud Computing, Depok City</div>
+          <div class="cert-issuer">Juara 1 LKS Cloud Computing Kota Depok</div>
+        </div>
+
+        <div class="card cert-card" onclick="openCert('SS-Certifikat AWS Academy Graduate - Cloud Foundations - Training Badge.jpg')">
+          <div style="font-size:11px; color:var(--aws-orange); font-family:monospace;">2026 · AWS Academy</div>
+          <div class="cert-title">AWS Academy Graduate - Cloud Foundations</div>
+          <div class="cert-issuer">AWS Training &amp; Certification</div>
+        </div>
+
+        <div class="card cert-card" onclick="openCert('ss-sertifikat-aws-cloud-essentials.jpg')">
+          <div style="font-size:11px; color:var(--aws-orange); font-family:monospace;">2026 · Komdigi x AWS</div>
+          <div class="cert-title">Cloud Essentials CA - DEX - AWS</div>
+          <div class="cert-issuer">Digital Talent Academy</div>
+        </div>
+
+        <div class="card cert-card" onclick="openCert('ss-digitalent fundamental network administrator.jpg')">
+          <div style="font-size:11px; color:var(--aws-orange); font-family:monospace;">2026 · Komdigi</div>
+          <div class="cert-title">Fundamental Associate Network Administrator</div>
+          <div class="cert-issuer">Digital Talent Academy</div>
+        </div>
+
+        <div class="card cert-card" onclick="openCert('ss-intermediate associate network administrator.jpg')">
+          <div style="font-size:11px; color:var(--aws-orange); font-family:monospace;">2026 · Komdigi</div>
+          <div class="cert-title">Intermediate Associate Network Administrator</div>
+          <div class="cert-issuer">Digital Talent Academy</div>
+        </div>
+
+        <div class="card cert-card" onclick="openCert('ss-sertif-fundamental of cyber Security digitalent.jpg')">
+          <div style="font-size:11px; color:var(--aws-orange); font-family:monospace;">2026 · Komdigi x Huawei</div>
+          <div class="cert-title">Fundamental of Cybersecurity</div>
+          <div class="cert-issuer">Digital Talent Academy</div>
+        </div>
+
+      </div>
+    </section>
+
   </div>
-</div>
 
-<!-- CONTACT BANNER -->
-<div class="contact-banner">
-  <div class="cb-left">
-    <div class="cb-emoji">🤝</div>
-    <div>
-      <div class="cb-title">Mari Berkolaborasi atau Terhubung!</div>
-      <div class="cb-sub">Tertarik berdiskusi seputar Cloud Computing, AWS, atau infrastruktur jaringan? Hubungi saya.</div>
-    </div>
+  <!-- LIGHTBOX MODAL SERTIFIKAT -->
+  <div id="modal" class="modal" onclick="closeCert()">
+    <button class="modal-close" onclick="closeCert()">✕</button>
+    <img id="modal-img" src="" alt="Sertifikat" class="modal-img" />
   </div>
-  <a href="mailto:handywildanfirdaus@gmail.com" class="cb-btn">Kirim Email</a>
-</div>
 
-</div><!-- /wrapper -->
+  <footer>
+    © 2026 Handy Wildan Firdaus — All rights reserved.
+  </footer>
 
-<script>
-// ============ SKILLS DATA ============
-const skillsData = [
-  { name: 'AWS Compute (EC2, Lambda, ASG)', icon: '🖥️', level: 'expert', module: 'cloud' },
-  { name: 'AWS Storage & Database (S3, RDS, DynamoDB)', icon: '🪣', level: 'expert', module: 'cloud' },
-  { name: 'Terraform & CloudFormation (IaC)', icon: '📐', level: 'intermediate', module: 'cloud' },
-  { name: 'AWS Networking (VPC, ALB, Route 53)', icon: '🌐', level: 'expert', module: 'cloud' },
-  { name: 'MikroTik RouterOS v6 & v7', icon: '📡', level: 'expert', module: 'net' },
-  { name: 'Cisco Routing & Switching (OSPF/BGP)', icon: '🔌', level: 'intermediate', module: 'net' },
-  { name: 'Starlink Satellite & BIND9 DNS', icon: '🛰️', level: 'intermediate', module: 'net' },
-  { name: 'Docker & Containerization', icon: '🐳', level: 'intermediate', module: 'devops' },
-  { name: 'Proxmox VE & Virtualization', icon: '💻', level: 'intermediate', module: 'devops' },
-  { name: 'Linux Server Administration (Ubuntu/Alma)', icon: '🐧', level: 'expert', module: 'devops' },
-  { name: 'Git, GitHub & Vercel Deployment', icon: '🚀', level: 'intermediate', module: 'devops' },
-  { name: 'Wazuh & Cybersecurity Monitoring', icon: '🛡️', level: 'beginner', module: 'devops' },
-];
-
-const levelInfo = {
-  expert: { label: 'Expert', cls: 'sl-expert' },
-  intermediate: { label: 'Intermediate', cls: 'sl-intermediate' },
-  beginner: { label: 'Beginner', cls: 'sl-beginner' },
-};
-
-function renderSkills(filter) {
-  const grid = document.getElementById('skillsGrid');
-  const filtered = filter === 'all' ? skillsData : skillsData.filter(s => s.module === filter);
-  grid.innerHTML = filtered.map(s => {
-    const lv = levelInfo[s.level];
-    return `<div class="skill-row">
-      <span class="skill-icon">${s.icon}</span>
-      <span class="skill-name">${s.name}</span>
-      <span class="skill-level ${lv.cls}">${lv.label}</span>
-    </div>`;
-  }).join('');
-}
-
-function filterSkills(f, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderSkills(f);
-}
-
-// Live Date
-function updateDate() {
-  const d = new Date();
-  const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-  document.getElementById('liveDate').textContent = d.toLocaleDateString('id-ID', opts);
-}
-
-updateDate();
-renderSkills('all');
-</script>
+  <script>
+    function openCert(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal').classList.add('active');
+    }
+    function closeCert() {
+      document.getElementById('modal').classList.remove('active');
+    }
+  </script>
 </body>
 </html>
